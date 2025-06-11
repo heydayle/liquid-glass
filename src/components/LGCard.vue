@@ -16,7 +16,26 @@
     
     <!-- SVG Filter for liquid glass effect -->
     <svg class="svg-filters" v-if="!globalFilters">
-      
+        <filter id="ios26-liquid-distortion">
+            <!-- 1. The Lens Shape -->
+            <feImage
+                href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0icmdiYSgwLDAsMCwwKSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSJyZ2JhKDAsMCwwLDAuNSkiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9InJnYmEoMCwwLDAsMCkiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGZpbGw9InVybCgjZykiIGN4PSIyMDAiIGN5PSIyMDAiIHI9IjIwMCIvPjwvc3ZnPg=="
+                x="0" y="0" width="100%" height="100%" result="lensGradient" />
+
+            <!-- 2. The Watery Shimmer -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.015 0.035" numOctaves="2" result="turbulence" seed="0" />
+
+            <!-- 3. Smooth the Shimmer -->
+            <feGaussianBlur in="turbulence" stdDeviation="1.5" result="smoothedTurbulence" />
+
+            <!-- 4. Combine Lens and Shimmer -->
+            <feComposite in="lensGradient" in2="smoothedTurbulence" operator="in" result="composedMap" />
+
+            <!-- 5. Apply the final displacement -->
+            <feDisplacementMap in="SourceGraphic" in2="composedMap" scale="50" xChannelSelector="R"
+                yChannelSelector="G" />
+        </filter>
+
     </svg>
   </div>
 </template>

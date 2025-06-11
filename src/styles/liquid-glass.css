@@ -1,0 +1,153 @@
+:root {
+  /* Typography */
+  --lg-font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+  --lg-font-size-xs: 11px;
+  --lg-font-size-sm: 13px;
+  --lg-font-size-base: 15px;
+  --lg-font-size-lg: 17px;
+  --lg-font-size-xl: 19px;
+  --lg-font-size-2xl: 22px;
+  --lg-font-size-3xl: 28px;
+  --lg-font-size-4xl: 34px;
+  
+  /* Spacing */
+  --lg-space-1: 2px;
+  --lg-space-2: 4px;
+  --lg-space-3: 8px;
+  --lg-space-4: 12px;
+  --lg-space-5: 16px;
+  --lg-space-6: 20px;
+  --lg-space-7: 24px;
+  --lg-space-8: 32px;
+  --lg-space-9: 40px;
+  --lg-space-10: 48px;
+  
+  /* Authentic Glass Materials */
+  --lg-glass-ultra-thin: rgba(255, 255, 255, 0.03);
+  --lg-glass-thin: rgba(255, 255, 255, 0.06);
+  --lg-glass-regular: rgba(255, 255, 255, 0.09);
+  --lg-glass-thick: rgba(255, 255, 255, 0.13);
+  --lg-glass-ultra-thick: rgba(255, 255, 255, 0.18);
+  
+  /* Refined Shadow System - Closer to Reference */
+  --lg-shadow-none: none;
+  --lg-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --lg-shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.06);
+  --lg-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.08);
+  --lg-shadow-elevated: 0 8px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.10);
+  --lg-shadow-floating: 0 12px 28px rgba(0, 0, 0, 0.15), 0 6px 12px rgba(0, 0, 0, 0.12);
+  
+  /* Natural Text Colors */
+  --lg-text-primary: rgba(255, 255, 255, 0.96);
+  --lg-text-secondary: rgba(255, 255, 255, 0.78);
+  --lg-text-tertiary: rgba(255, 255, 255, 0.58);
+  --lg-text-quaternary: rgba(255, 255, 255, 0.38);
+  
+  /* Glass Edge Highlights */
+  --lg-edge-highlight: rgba(255, 255, 255, 0.25);
+  --lg-edge-subtle: rgba(255, 255, 255, 0.15);
+  --lg-edge-soft: rgba(255, 255, 255, 0.10);
+  --lg-edge-minimal: rgba(255, 255, 255, 0.06);
+  
+  /* Natural Accent Colors */
+  --lg-accent-neutral: rgba(255, 255, 255, 0.15);
+  --lg-accent-warm: rgba(255, 248, 240, 0.15);
+  --lg-accent-cool: rgba(240, 248, 255, 0.15);
+  
+  /* Radius System */
+  --lg-radius-xs: 4px;
+  --lg-radius-sm: 6px;
+  --lg-radius-md: 8px;
+  --lg-radius-lg: 12px;
+  --lg-radius-xl: 16px;
+  --lg-radius-2xl: 20px;
+  --lg-radius-3xl: 24px;
+  --lg-radius-full: 50px;
+  
+  /* Refined Animation Curves */
+  --lg-ease-natural: cubic-bezier(0.2, 0, 0.2, 1);
+  --lg-ease-gentle: cubic-bezier(0.16, 1, 0.3, 1);
+  --lg-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Authentic Glass Base - Matches Reference */
+.lg-glass {
+  backdrop-filter: blur(10px) saturate(120%) brightness(105%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%) brightness(105%);
+  background: var(--lg-glass-regular);
+  border: 1px solid var(--lg-edge-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.lg-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    var(--lg-edge-highlight) 0%,
+    transparent 25%,
+    transparent 75%,
+    var(--lg-edge-subtle) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.lg-glass::after {
+  content: '';
+  position: absolute;
+  inset: 0.5px;
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 30%,
+    rgba(255, 255, 255, 0.01) 70%,
+    rgba(255, 255, 255, 0.03) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Glass Variants */
+.lg-glass--ultra-thin {
+  backdrop-filter: blur(6px) saturate(110%) brightness(102%);
+  -webkit-backdrop-filter: blur(6px) saturate(110%) brightness(102%);
+  background: var(--lg-glass-ultra-thin);
+  border: 1px solid var(--lg-edge-minimal);
+}
+
+.lg-glass--thin {
+  backdrop-filter: blur(8px) saturate(115%) brightness(103%);
+  -webkit-backdrop-filter: blur(8px) saturate(115%) brightness(103%);
+  background: var(--lg-glass-thin);
+  border: 1px solid var(--lg-edge-soft);
+}
+
+.lg-glass--thick {
+  backdrop-filter: blur(14px) saturate(130%) brightness(108%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%) brightness(108%);
+  background: var(--lg-glass-thick);
+  border: 1px solid var(--lg-edge-subtle);
+}
+
+.lg-glass--ultra-thick {
+  backdrop-filter: blur(18px) saturate(140%) brightness(112%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%) brightness(112%);
+  background: var(--lg-glass-ultra-thick);
+  border: 1px solid var(--lg-edge-highlight);
+}
+
+/* Dark mode refinements */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lg-glass-ultra-thin: rgba(255, 255, 255, 0.02);
+    --lg-glass-thin: rgba(255, 255, 255, 0.04);
+    --lg-glass-regular: rgba(255, 255, 255, 0.06);
+    --lg-glass-thick: rgba(255, 255, 255, 0.09);
+    --lg-glass-ultra-thick: rgba(255, 255, 255, 0.13);
+    
+    --lg-edge-highlight: rgba(255, 255, 255, 0.18);
+    --lg-edge-subtle: rgba(255, 255, 255, 0.12);
+    --lg-edge-soft: rgba(255, 255, 255, 0.08);
+    --lg-edge-minimal: rgba(255, 255, 255, 0.04);
+  }
+}

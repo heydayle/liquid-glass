@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS 26 Apple Liquid Glass</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /*
+        ==============================================
+        iOS 26 APPLE LIQUID GLASS SETUP
+        ==============================================
+        */
+        :root {
+            --glow-size: 400px;
+            --background-hue: 220;
+            --apple-blue: #007AFF;
+            --apple-purple: #AF52DE;
+            --apple-pink: #FF2D92;
+            --apple-orange: #FF9500;
+            --surface-primary: rgba(255, 255, 255, 0.08);
+            --surface-secondary: rgba(255, 255, 255, 0.12);
+            --text-primary: rgba(255, 255, 255, 0.98);
+            --text-secondary: rgba(255, 255, 255, 0.75);
+            --border-primary: rgba(255, 255, 255, 0.15);
+            --border-hover: rgba(255, 255, 255, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        @supports (font-family: -apple-system) {
+            :root {
+                font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+            }
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: linear-gradient(135deg,
+                    hsl(var(--background-hue), 25%, 8%) 0%,
+                    hsl(calc(var(--background-hue) + 20), 20%, 12%) 50%,
+                    hsl(calc(var(--background-hue) + 40), 15%, 8%) 100%);
+            color: var(--text-primary);
+            height: 300vh;
+            position: relative;
+            overflow-x: hidden;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Enhanced background world with Apple-style gradients */
+        .background-world {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+            filter: blur(1px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+            }
+
+            50% {
+                transform: translateY(0px) rotate(180deg);
+            }
+
+            75% {
+                transform: translateY(-10px) rotate(270deg);
+            }
+        }
+
+        .shape-1 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle at 30% 30%,
+                    var(--apple-blue) 0%,
+                    var(--apple-purple) 40%,
+                    transparent 70%);
+            top: 8vh;
+            left: 8vw;
+            animation-delay: -2s;
+        }
+
+        .shape-2 {
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle at 70% 40%,
+                    var(--apple-pink) 0%,
+                    var(--apple-orange) 30%,
+                    transparent 65%);
+            top: 65vh;
+            right: 10vw;
+            animation-delay: -8s;
+        }
+
+        .shape-3 {
+            width: 320px;
+            height: 320px;
+            background: conic-gradient(from 45deg,
+                    var(--apple-purple) 0deg,
+                    var(--apple-blue) 90deg,
+                    var(--apple-pink) 180deg,
+                    var(--apple-orange) 270deg,
+                    var(--apple-purple) 360deg);
+            border-radius: 35% 65% 65% 35% / 35% 35% 65% 65%;
+            top: 140vh;
+            left: 15vw;
+            animation-delay: -12s;
+        }
+
+        .shape-4 {
+            width: 280px;
+            height: 600px;
+            background: linear-gradient(45deg,
+                    var(--apple-blue) 0%,
+                    var(--apple-purple) 50%,
+                    var(--apple-pink) 100%);
+            border-radius: 100% 30% 100% 30% / 100% 30% 100% 30%;
+            top: 200vh;
+            right: 12vw;
+            animation-delay: -5s;
+        }
+
+        .shape-5 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(ellipse at 60% 20%,
+                    var(--apple-orange) 0%,
+                    var(--apple-pink) 35%,
+                    transparent 70%);
+            top: 240vh;
+            left: 8vw;
+            animation-delay: -15s;
+        }
+
+        /*
+        ==============================================
+        iOS 26 LIQUID GLASS CARD
+        ==============================================
+        */
+        .liquid-glass-card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 440px;
+
+            /* Enhanced Apple-style glass morphism */
+            background: var(--surface-primary);
+            border-radius: 28px;
+            border: 1px solid var(--border-primary);
+            padding: 40px 36px;
+
+            /* Advanced backdrop filter stack */
+            backdrop-filter:
+                blur(20px) saturate(1.8) contrast(1.1) brightness(1.05) url(#ios26-liquid-distortion);
+            -webkit-backdrop-filter:
+                blur(20px) saturate(1.8) contrast(1.1) brightness(1.05) url(#ios26-liquid-distortion);
+
+            /* Premium shadows */
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 1px 2px rgba(255, 255, 255, 0.1) inset,
+                0 -1px 2px rgba(0, 0, 0, 0.1) inset;
+
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .liquid-glass-card:hover {
+            border-color: var(--border-hover);
+            background: var(--surface-secondary);
+            transform: translate(-50%, -50%) scale(1.02);
+            box-shadow:
+                0 12px 48px rgba(0, 0, 0, 0.4),
+                0 1px 2px rgba(255, 255, 255, 0.15) inset,
+                0 -1px 2px rgba(0, 0, 0, 0.1) inset;
+        }
+
+        /* Enhanced Apple-style caustic light effect */
+        .liquid-glass-card::before {
+            content: '';
+            position: absolute;
+            top: var(--mouse-y, 50%);
+            left: var(--mouse-x, 50%);
+            transform: translate(-50%, -50%);
+            width: var(--glow-size);
+            height: var(--glow-size);
+            background: radial-gradient(circle at center,
+                    rgba(255, 255, 255, 0.2) 0%,
+                    rgba(0, 122, 255, 0.1) 25%,
+                    rgba(175, 82, 222, 0.05) 50%,
+                    transparent 70%);
+            opacity: var(--mouse-active, 0);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                top 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+                left 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            mix-blend-mode: soft-light;
+        }
+
+        /* Apple-style edge highlight */
+        .liquid-glass-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 28px;
+            padding: 1px;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.3) 0%,
+                    rgba(255, 255, 255, 0.1) 25%,
+                    transparent 50%,
+                    transparent 75%,
+                    rgba(255, 255, 255, 0.2) 100%);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: xor;
+            -webkit-mask-composite: xor;
+            opacity: var(--mouse-active, 0.3);
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        /* Apple Typography */
+        .card-content h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            background: linear-gradient(135deg,
+                    var(--text-primary) 0%,
+                    rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-content p {
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            letter-spacing: -0.01em;
+        }
+
+        /* Apple-style accent */
+        .accent-dot {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, var(--apple-blue), var(--apple-purple));
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        .svg-filters {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        /* Subtle grid pattern overlay for premium feel */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-overlay"></div>
+
+    <!-- Enhanced background world with Apple-style elements -->
+    <div class="background-world">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+    </div>
+
+    <!-- iOS 26 Apple Liquid Glass Card -->
+    <div class="liquid-glass-card" id="glass-card">
+        <div class="accent-dot"></div>
+        <div class="card-content">
+            <h2>Liquid Glass</h2>
+            <p>Experience the future of interface design with iOS 26's revolutionary liquid glass technology. This
+                advanced material responds to your touch with precision and beauty.</p>
+        </div>
+    </div>
+
+    <!-- Enhanced SVG Filter for iOS 26 Effect -->
+    <svg class="svg-filters">
+        <!-- <filter id="ios26-liquid-distortion"> -->
+        <!-- Advanced lens gradient with smoother falloff -->
+        <feImage
+            href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0icmdiYSgwLDAsMCwwKSIvPjxzdG9wIG9mZnNldD0iMzAlIiBzdG9wLWNvbG9yPSJyZ2JhKDAsMCwwLDAuMykiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0icmdiYSgwLDAsMCwwLjUpIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSJyZ2JhKDAsMCwwLDApIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PGNpcmNsZSBmaWxsPSJ1cmwoI2cpIiBjeD0iMjAwIiBjeT0iMjAwIiByPSIyMDAiLz48L3N2Zz4="
+            x="0" y="0" width="100%" height="100%" result="appleLensGradient" />
+
+        <!-- Refined turbulence for smoother liquid effect -->
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.028" numOctaves="3" result="appleTurbulence"
+            seed="0" />
+
+        <!-- Enhanced smoothing -->
+        <feGaussianBlur in="appleTurbulence" stdDeviation="2" result="smoothAppleTurbulence" />
+
+        <!-- Color matrix for more refined distortion -->
+        <feColorMatrix in="smoothAppleTurbulence" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.6 0"
+            result="refinedTurbulence" />
+
+        <!-- Combine with enhanced blending -->
+        <feComposite in="appleLensGradient" in2="refinedTurbulence" operator="multiply" result="finalAppleMap" />
+
+        <!-- Apply smoother displacement -->
+        <feDisplacementMap in="SourceGraphic" in2="finalAppleMap" scale="35" xChannelSelector="R"
+            yChannelSelector="G" />
+        <!-- </filter> -->
+    </svg>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.getElementById('glass-card');
+            const turbulence = document.querySelector('#ios26-liquid-distortion feTurbulence');
+            let frame = 0;
+            let lastScrollY = window.scrollY;
+
+            // Enhanced mouse interaction with Apple-style easing
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Smooth mouse tracking with momentum
+                requestAnimationFrame(() => {
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                    card.style.setProperty('--mouse-active', 1);
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.setProperty('--mouse-active', 0);
+            });
+
+            // Enhanced scroll interaction with Apple-style color transitions
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        const scrollY = window.scrollY;
+                        const scrollDelta = scrollY - lastScrollY;
+
+                        // Smooth color transitions
+                        const maxScroll = document.body.scrollHeight - window.innerHeight;
+                        const scrollPercent = scrollY / maxScroll;
+                        const newHue = 220 + scrollPercent * 140; // Blue to pink transition
+
+                        document.documentElement.style.setProperty('--background-hue', newHue);
+
+                        // Subtle distortion changes
+                        const currentSeed = parseFloat(turbulence.getAttribute('seed')) || 0;
+                        turbulence.setAttribute('seed', currentSeed + Math.abs(scrollDelta) * 0.05);
+
+                        lastScrollY = scrollY;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // Refined animation loop with Apple-style organic movement
+            function animateAppleLiquid() {
+                // More subtle, organic frequency changes
+                const time = frame * 0.008;
+                const newBaseFrequencyX = 0.012 + Math.sin(time) * 0.003;
+                const newBaseFrequencyY = 0.028 + Math.cos(time * 1.3) * 0.004;
+
+                turbulence.setAttribute('baseFrequency', `${newBaseFrequencyX} ${newBaseFrequencyY}`);
+
+                frame++;
+                requestAnimationFrame(animateAppleLiquid);
+            }
+
+            // Apple-style haptic feedback simulation (visual)
+            card.addEventListener('click', () => {
+                card.style.transform = 'translate(-50%, -50%) scale(0.98)';
+                setTimeout(() => {
+                    card.style.transform = 'translate(-50%, -50%) scale(1.02)';
+                    setTimeout(() => {
+                        card.style.transform = 'translate(-50%, -50%) scale(1)';
+                    }, 100);
+                }, 100);
+            });
+
+            // Start the enhanced animation
+            animateAppleLiquid();
+        });
+    </script>
+</body>
+
+</html>

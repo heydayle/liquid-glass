@@ -6,11 +6,11 @@ import path from 'path'
 export default defineConfig({
     plugins: [vue()],
     build: {
-        lib: {
-            entry: path.resolve(__dirname, 'src/index.js'),
-            name: 'Solaraui',
-            fileName: (format) => `Solaraui.${format}.js`
-        },
+        // lib: {
+        //     entry: path.resolve(__dirname, 'src/index.js'),
+        //     name: 'Solaraui',
+        //     fileName: (format) => `Solaraui.${format}.js`
+        // },
         rollupOptions: {
             external: ['vue'],
             output: {

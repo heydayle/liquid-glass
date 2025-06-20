@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iOS 26 Apple Liquid Glass</title>
+    <title>Liquid Glass</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap"
@@ -12,7 +12,7 @@
     <style>
         /*
         ==============================================
-        iOS 26 APPLE LIQUID GLASS SETUP
+        LIQUID GLASS SETUP
         ==============================================
         */
         :root {
@@ -28,6 +28,11 @@
             --text-secondary: rgba(255, 255, 255, 0.75);
             --border-primary: rgba(255, 255, 255, 0.15);
             --border-hover: rgba(255, 255, 255, 0.25);
+            --lg-bg-color: rgba(255, 255, 255, 0.25);
+            --lg-highlight: rgba(255, 255, 255, 0.75);
+            --lg-text: #ffffff;
+            --lg-red: #fb4268;
+            --lg-grey: #444739;
         }
 
         * {
@@ -44,10 +49,6 @@
 
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            background: linear-gradient(135deg,
-                    hsl(var(--background-hue), 25%, 8%) 0%,
-                    hsl(calc(var(--background-hue) + 20), 20%, 12%) 50%,
-                    hsl(calc(var(--background-hue) + 40), 15%, 8%) 100%);
             color: var(--text-primary);
             height: 300vh;
             position: relative;
@@ -55,297 +56,115 @@
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Enhanced background world with Apple-style gradients */
-        .background-world {
+        .bg {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
+            z-index: -1
+        }
+
+        .bg img {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.4;
-            filter: blur(1px);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            25% {
-                transform: translateY(-20px) rotate(90deg);
-            }
-
-            50% {
-                transform: translateY(0px) rotate(180deg);
-            }
-
-            75% {
-                transform: translateY(-10px) rotate(270deg);
-            }
-        }
-
-        .shape-1 {
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle at 30% 30%,
-                    var(--apple-blue) 0%,
-                    var(--apple-purple) 40%,
-                    transparent 70%);
-            top: 8vh;
-            left: 8vw;
-            animation-delay: -2s;
-        }
-
-        .shape-2 {
-            width: 380px;
-            height: 380px;
-            background: radial-gradient(circle at 70% 40%,
-                    var(--apple-pink) 0%,
-                    var(--apple-orange) 30%,
-                    transparent 65%);
-            top: 65vh;
-            right: 10vw;
-            animation-delay: -8s;
-        }
-
-        .shape-3 {
-            width: 320px;
-            height: 320px;
-            background: conic-gradient(from 45deg,
-                    var(--apple-purple) 0deg,
-                    var(--apple-blue) 90deg,
-                    var(--apple-pink) 180deg,
-                    var(--apple-orange) 270deg,
-                    var(--apple-purple) 360deg);
-            border-radius: 35% 65% 65% 35% / 35% 35% 65% 65%;
-            top: 140vh;
-            left: 15vw;
-            animation-delay: -12s;
-        }
-
-        .shape-4 {
-            width: 280px;
-            height: 600px;
-            background: linear-gradient(45deg,
-                    var(--apple-blue) 0%,
-                    var(--apple-purple) 50%,
-                    var(--apple-pink) 100%);
-            border-radius: 100% 30% 100% 30% / 100% 30% 100% 30%;
-            top: 200vh;
-            right: 12vw;
-            animation-delay: -5s;
-        }
-
-        .shape-5 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(ellipse at 60% 20%,
-                    var(--apple-orange) 0%,
-                    var(--apple-pink) 35%,
-                    transparent 70%);
-            top: 240vh;
-            left: 8vw;
-            animation-delay: -15s;
+            display: block
         }
 
         /*
         ==============================================
-        iOS 26 LIQUID GLASS CARD
+        LIQUID GLASS CARD
         ==============================================
         */
-        .liquid-glass-card {
+        /* .glass-container {
             position: fixed;
-            top: 50%;
-            left: 50%;
+            inset: 50% auto auto 50%;
             transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 440px;
-
-            /* Enhanced Apple-style glass morphism */
-            background: var(--surface-primary);
-            border-radius: 28px;
-            border: 1px solid var(--border-primary);
-            padding: 40px 36px;
-
-            /* Advanced backdrop filter stack */
-            backdrop-filter:
-                blur(20px) saturate(1.8) contrast(1.1) brightness(1.05) url(#ios26-liquid-distortion);
-            -webkit-backdrop-filter:
-                blur(20px) saturate(1.8) contrast(1.1) brightness(1.05) url(#ios26-liquid-distortion);
-
-            /* Premium shadows */
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                0 1px 2px rgba(255, 255, 255, 0.1) inset,
-                0 -1px 2px rgba(0, 0, 0, 0.1) inset;
-
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 20rem;
+            height: 20rem;
+            border-radius: 10%;
+            background: rgba(255, 255, 255, .08);
+            border: 2px solid transparent;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .6), 0 16px 32px rgba(0, 0, 0, .12);
+            backdrop-filter: blur(4px);
+            backdrop-filter: url(#lensFilter);
+            -webkit-backdrop-filter: url(#lensFilter);
+            display: grid;
+            place-items: center;
             cursor: pointer;
-        }
-
-        .liquid-glass-card:hover {
-            border-color: var(--border-hover);
-            background: var(--surface-secondary);
-            transform: translate(-50%, -50%) scale(1.02);
-            box-shadow:
-                0 12px 48px rgba(0, 0, 0, 0.4),
-                0 1px 2px rgba(255, 255, 255, 0.15) inset,
-                0 -1px 2px rgba(0, 0, 0, 0.1) inset;
-        }
-
-        /* Enhanced Apple-style caustic light effect */
-        .liquid-glass-card::before {
-            content: '';
-            position: absolute;
-            top: var(--mouse-y, 50%);
-            left: var(--mouse-x, 50%);
-            transform: translate(-50%, -50%);
-            width: var(--glow-size);
-            height: var(--glow-size);
-            background: radial-gradient(circle at center,
-                    rgba(255, 255, 255, 0.2) 0%,
-                    rgba(0, 122, 255, 0.1) 25%,
-                    rgba(175, 82, 222, 0.05) 50%,
-                    transparent 70%);
-            opacity: var(--mouse-active, 0);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                top 0.15s cubic-bezier(0.4, 0, 0.2, 1),
-                left 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-            mix-blend-mode: soft-light;
-        }
-
-        /* Apple-style edge highlight */
-        .liquid-glass-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 28px;
-            padding: 1px;
-            background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.3) 0%,
-                    rgba(255, 255, 255, 0.1) 25%,
-                    transparent 50%,
-                    transparent 75%,
-                    rgba(255, 255, 255, 0.2) 100%);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: xor;
-            -webkit-mask-composite: xor;
-            opacity: var(--mouse-active, 0.3);
-            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-        }
-
-        /* Apple Typography */
-        .card-content h2 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            background: linear-gradient(135deg,
-                    var(--text-primary) 0%,
-                    rgba(255, 255, 255, 0.8) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .card-content p {
-            font-size: 17px;
-            font-weight: 400;
-            line-height: 1.5;
-            color: var(--text-secondary);
-            letter-spacing: -0.01em;
-        }
-
-        /* Apple-style accent */
-        .accent-dot {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 12px;
-            height: 12px;
-            background: linear-gradient(135deg, var(--apple-blue), var(--apple-purple));
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.6;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-        }
-
-        .svg-filters {
-            position: absolute;
-            width: 0;
-            height: 0;
-            overflow: hidden;
-        }
-
-        /* Subtle grid pattern overlay for premium feel */
-        .grid-overlay {
+            outline: 0;
+        } */
+        .glass-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            inset: 50% auto auto 50%;
+            transform: translate(-50%, -50%);
+            width: 20rem;
+            height: 20rem;
+            align-items: center;
+            background: rgba(255, 255, 255, .04);
+            border-radius: 50%;
+            overflow: hidden;
+            flex: 1 1 auto;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .6), 0 16px 32px rgba(0, 0, 0, .10);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+        }
+
+        .glass-filter,
+        .glass-overlay,
+        .glass-specular {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+        }
+
+        .glass-filter {
+            z-index: 0;
+            backdrop-filter: blur(12px);
+            filter: url(#lensFilter) saturate(120%) brightness(1.15);
+        }
+
+        .glass-overlay {
+            z-index: 1;
+            background: var(--lg-bg-color);
+        }
+
+        .glass-specular {
+            z-index: 2;
+            box-shadow: inset 1px 1px 0 var(--lg-highlight),
+                inset 0 0 5px var(--lg-highlight);
+        }
+        .glass-content {
             height: 100%;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: -2;
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex: 1 1 auto;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            gap: 1rem;
+            flex-wrap: wrap;
+            font-size: 30px;
+            font-weight: 900;
+            text-shadow: #727272 2px 2px 5px;
         }
     </style>
 </head>
 
 <body>
-
-    <div class="grid-overlay"></div>
-
-    <!-- Enhanced background world with Apple-style elements -->
-    <div class="background-world">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-        <div class="shape shape-5"></div>
+    <div class="bg">
+        <img src="https://i.ibb.co/bMvc7Zr6/Vibrant-Summer-Meadow-Watercolor.png" alt="">
+        <img src="https://i.ibb.co/ZRH04pV3/Vibrant-Summer-Meadow-Watercolor-1.png" alt="">
+        <img src="https://i.ibb.co/bMvc7Zr6/Vibrant-Summer-Meadow-Watercolor.png" alt="">
     </div>
 
     <!-- iOS 26 Apple Liquid Glass Card -->
-    <div class="liquid-glass-card" id="glass-card">
-        <div class="accent-dot"></div>
-        <div class="card-content">
-            <h2>Liquid Glass</h2>
-            <p>Experience the future of interface design with iOS 26's revolutionary liquid glass technology. This
-                advanced material responds to your touch with precision and beauty.</p>
+    <div class="glass-container" id="glass-card">
+        <div class="glass-filter"></div>
+        <div class="glass-overlay"></div>
+        <div class="glass-specular"></div>
+        <div class="glass-content">
+            <div class="socials">
+                <a href="https://github.com/heydayle/liquid-glass">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 256 256"><!-- Icon from Skill Icons by tandpfun - https://github.com/tandpfun/skill-icons/blob/main/LICENSE --><g fill="none"><rect width="256" height="256" fill="#F4F2ED" rx="60"/><path fill="#161614" d="M128.001 30C72.779 30 28 74.77 28 130.001c0 44.183 28.653 81.667 68.387 94.89c4.997.926 6.832-2.169 6.832-4.81c0-2.385-.093-10.262-.136-18.618c-27.82 6.049-33.69-11.799-33.69-11.799c-4.55-11.559-11.104-14.632-11.104-14.632c-9.073-6.207.684-6.079.684-6.079c10.042.705 15.33 10.305 15.33 10.305c8.919 15.288 23.394 10.868 29.1 8.313c.898-6.464 3.489-10.875 6.349-13.372c-22.211-2.529-45.56-11.104-45.56-49.421c0-10.918 3.906-19.839 10.303-26.842c-1.039-2.519-4.462-12.69.968-26.464c0 0 8.398-2.687 27.508 10.25c7.977-2.215 16.531-3.326 25.03-3.364c8.498.038 17.06 1.149 25.051 3.365c19.087-12.939 27.473-10.25 27.473-10.25c5.443 13.773 2.019 23.945.98 26.463c6.412 7.003 10.292 15.924 10.292 26.842c0 38.409-23.394 46.866-45.662 49.341c3.587 3.104 6.783 9.189 6.783 18.519c0 13.38-.116 24.149-.116 27.443c0 2.661 1.8 5.779 6.869 4.797C199.383 211.64 228 174.169 228 130.001C228 74.771 183.227 30 128.001 30M65.454 172.453c-.22.497-1.002.646-1.714.305c-.726-.326-1.133-1.004-.898-1.502c.215-.512.999-.654 1.722-.311c.727.326 1.141 1.01.89 1.508m4.919 4.389c-.477.443-1.41.237-2.042-.462c-.654-.697-.777-1.629-.293-2.078c.491-.442 1.396-.235 2.051.462c.654.706.782 1.631.284 2.078m3.374 5.616c-.613.426-1.615.027-2.234-.863c-.613-.889-.613-1.955.013-2.383c.621-.427 1.608-.043 2.236.84c.611.904.611 1.971-.015 2.406m5.707 6.504c-.548.604-1.715.442-2.57-.383c-.874-.806-1.118-1.95-.568-2.555c.555-.606 1.729-.435 2.59.383c.868.804 1.133 1.957.548 2.555m7.376 2.195c-.242.784-1.366 1.14-2.499.807c-1.13-.343-1.871-1.26-1.642-2.052c.235-.788 1.364-1.159 2.505-.803c1.13.341 1.871 1.252 1.636 2.048m8.394.932c.028.824-.932 1.508-2.121 1.523c-1.196.027-2.163-.641-2.176-1.452c0-.833.939-1.51 2.134-1.53c1.19-.023 2.163.639 2.163 1.459m8.246-.316c.143.804-.683 1.631-1.864 1.851c-1.161.212-2.236-.285-2.383-1.083c-.144-.825.697-1.651 1.856-1.865c1.183-.205 2.241.279 2.391 1.097"/></g></svg>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -371,6 +190,16 @@
                 yChannelSelector="G" />
         </filter>
 
+    </svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+        <filter id="lensFilter" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+            <feComponentTransfer in="SourceAlpha" result="alpha">
+                <feFuncA type="identity" />
+            </feComponentTransfer>
+            <feGaussianBlur in="alpha" stdDeviation="70" result="blur" />
+            <feDisplacementMap in="SourceGraphic" in2="blur" scale="80" xChannelSelector="A" yChannelSelector="A" />
+        </filter>
     </svg>
 
     <script>

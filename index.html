@@ -114,8 +114,8 @@
 
         .glass-filter {
             z-index: 0;
-            backdrop-filter: blur(4px);
-            filter: url(#lensFilter) saturate(120%) brightness(1.15);
+            backdrop-filter: blur(0);
+            filter: url(#lensFilter) saturate(120%) brightness(1);
         }
 
         .glass-overlay {
@@ -197,8 +197,8 @@
             <feComponentTransfer in="SourceAlpha" result="alpha">
                 <feFuncA type="identity" />
             </feComponentTransfer>
-            <feGaussianBlur in="alpha" stdDeviation="70" result="blur" />
-            <feDisplacementMap in="SourceGraphic" in2="blur" scale="80" xChannelSelector="A" yChannelSelector="A" />
+            <feGaussianBlur in="alpha" stdDeviation="220" result="blur" />
+            <feDisplacementMap in="SourceGraphic" in2="blur" scale="1200" xChannelSelector="A" yChannelSelector="A" />
         </filter>
     </svg>
 

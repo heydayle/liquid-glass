@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Libertinus+Mono&family=Quicksand:wght@300..700&display=swap');
+
+/* .home {
+  padding: 16px;
+} */
+
+@keyframes BackgroundGradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+body, html {
+  background: #0f0f0f;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Common Blob Styles */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  filter: blur(10px);
+  animation: float 20s infinite ease-in-out;
+  mix-blend-mode: screen;
+}
+
+/* Individual blobs with unique positions/sizes/colors */
+.blob1 {
+  width: 300px;
+  height: 300px;
+  background: #ff6ec4;
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.blob2 {
+  width: 400px;
+  height: 400px;
+  background: #7873f5;
+  top: 30%;
+  left: 60%;
+  animation-delay: 5s;
+}
+
+.blob3 {
+  width: 250px;
+  height: 250px;
+  background: #3ee8c9;
+  top: 60%;
+  left: 30%;
+  animation-delay: 10s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-60px) translateX(30px);
+  }
+}

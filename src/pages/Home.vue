@@ -5,14 +5,26 @@
             <div class="blob blob2"></div>
             <div class="blob blob3"></div>
         </div>
-        <div class="absolute top-4 right-4 z-10 bg-white/10 text-white rounded-md p-2 w-100 flex flex-col space-y-2" >
-            <div>
-                <input id="blur" type="number" v-model="blur" class="w-60px" />
-                <label for="blur">(px) Blur</label>
+        <div class="absolute top-4 right-4 z-10 text-white rounded-md p-2 w-80 flex flex-col space-y-2" >
+            <div class="m-auto">
+                <ElasticSlider 
+                    v-model="blur"
+                    :starting-value="0"
+                    :max-value="100"
+                    :is-stepped="true"
+                    :step-size="5"
+                    label="Blur"
+                />
             </div>
-            <div>
-                <input id="blur" type="number" v-model="borderRadius" class="w-60px" />
-                <label for="blur">(px) Border radius</label>
+            <div class="m-auto">
+                <ElasticSlider 
+                    v-model="borderRadius"
+                    :starting-value="0"
+                    :max-value="50"
+                    :is-stepped="true"
+                    :step-size="5"
+                    label="Border Radius"
+                />
             </div>
         </div>
         <div class="relative flex items-center justify-center h-full">
@@ -46,9 +58,10 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import LiquidGlass from '../components/LiquidGlass.vue';
+import ElasticSlider from '../components/ui/ElasticSlider/ElasticSlider.vue';
 
 const blur = ref(0);
 const borderRadius = ref(20);
